@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>New Albany AI Club</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Michroma&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --maroon:#7A0019;
+    --gold:#D4AF37;
+    --white:#ffffff;
+    --black:#000000;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:black;
+    color:white;
+    font-family:'Inter',sans-serif;
+    overflow-x:hidden;
+}
+
+/* PARTICLE CANVAS */
+
+#particles{
+    position:fixed;
+    inset:0;
+    z-index:0;
+}
+
+/* NAVBAR */
+
+nav{
+    position:fixed;
+    width:100%;
+    top:0;
+    z-index:100;
+    backdrop-filter:blur(10px);
+    background:rgba(0,0,0,.4);
+    border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.nav-container{
+    max-width:1400px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:25px 40px;
+}
+
+.logo{
+    font-family:'Michroma',sans-serif;
+    font-size:1.2rem;
+    letter-spacing:2px;
+}
+
+.logo span{
+    color:var(--gold);
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:40px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:var(--gold);
+}
+
+.join-btn{
+    border:1px solid var(--gold);
+    padding:12px 28px;
+    transition:.3s;
+}
+
+.join-btn:hover{
+    background:var(--gold);
+    color:black;
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    position:relative;
+    z-index:1;
+    padding:120px 20px;
+}
+
+.hero-content{
+    max-width:1200px;
+}
+
+.small-text{
+    color:var(--gold);
+    letter-spacing:8px;
+    margin-bottom:25px;
+}
+
+.hero h1{
+    font-family:'Michroma',sans-serif;
+    text-transform:uppercase;
+    font-size:clamp(4rem,8vw,8rem);
+    line-height:.95;
+}
+
+.maroon{
+    color:var(--maroon);
+}
+
+.gold{
+    color:var(--gold);
+}
+
+.hero p{
+    max-width:800px;
+    margin:40px auto;
+    color:#cfcfcf;
+    line-height:1.8;
+    font-size:1.15rem;
+}
+
+.cta{
+    display:inline-block;
+    margin-top:15px;
+    border:2px solid var(--gold);
+    color:var(--gold);
+    padding:18px 40px;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.cta:hover{
+    background:var(--gold);
+    color:black;
+}
+
+/* STATS */
+
+.stats{
+    margin-top:90px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:30px;
+}
+
+.stat{
+    padding:20px;
+}
+
+.stat h2{
+    font-size:4rem;
+    font-weight:800;
+}
+
+.stat p{
+    color:#ccc;
+    letter-spacing:3px;
+}
+
+/* ABOUT */
+
+.about{
+    position:relative;
+    z-index:1;
+    padding:120px 10%;
+}
+
+.about h2{
+    font-family:'Michroma',sans-serif;
+    font-size:3rem;
+    margin-bottom:30px;
+}
+
+.about p{
+    max-width:900px;
+    line-height:1.8;
+    color:#d0d0d0;
+}
+
+/* PROJECTS */
+
+.projects{
+    position:relative;
+    z-index:1;
+    padding:120px 10%;
+}
+
+.projects h2{
+    font-family:'Michroma',sans-serif;
+    font-size:3rem;
+    margin-bottom:50px;
+}
+
+.project-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:rgba(255,255,255,.03);
+    border:1px solid rgba(255,255,255,.08);
+    padding:30px;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    border-color:var(--gold);
+}
+
+.card h3{
+    margin-bottom:15px;
+    color:var(--gold);
+}
+
+/* FOOTER */
+
+footer{
+    position:relative;
+    z-index:1;
+    text-align:center;
+    padding:50px;
+    border-top:1px solid rgba(255,255,255,.08);
+    color:#888;
+}
+
+@media(max-width:900px){
+
+nav ul{
+    display:none;
+}
+
+.hero h1{
+    font-size:3rem;
+}
+
+.stats{
+    grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+
+<nav>
+
+<div class="nav-container">
+
+<div class="logo">
+<span>NA</span> AI CLUB
+</div>
+
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+
+<a href="#" class="join-btn">JOIN US</a>
+
+</div>
+
+</nav>
+
+<section class="hero" id="home">
+
+<div class="hero-content">
+
+<div class="small-text">
+INNOVATE • LEARN • TRANSFORM
+</div>
+
+<h1>
+BUILT BY<br>
+<span class="maroon">CURIOSITY</span><br>
+DRIVEN BY<br>
+<span class="gold">IMPACT</span>
+</h1>
+
+<p>
+The New Albany AI Club empowers students to explore artificial intelligence,
+build real-world projects, collaborate with industry professionals,
+and shape the future through technology.
+</p>
+
+<a href="#projects" class="cta">
+EXPLORE OUR WORK →
+</a>
+
+<div class="stats">
+
+<div class="stat">
+<h2 style="color:#7A0019;">100+</h2>
+<p>ACTIVE MEMBERS</p>
+</div>
+
+<div class="stat">
+<h2 style="color:#D4AF37;">25+</h2>
+<p>AI PROJECTS</p>
+</div>
+
+<div class="stat">
+<h2 style="color:#7A0019;">40+</h2>
+<p>EVENTS HOSTED</p>
+</div>
+
+<div class="stat">
+<h2 style="color:#D4AF37;">10+</h2>
+<p>COMPETITIONS WON</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="about" id="about">
+
+<h2>ABOUT THE CLUB</h2>
+
+<p>
+New Albany AI Club is dedicated to helping students learn artificial intelligence,
+machine learning, automation, and software development through hands-on projects,
+competitions, workshops, and industry partnerships.
+</p>
+
+</section>
+
+<section class="projects" id="projects">
+
+<h2>FEATURED PROJECTS</h2>
+
+<div class="project-grid">
+
+<div class="card">
+<h3>AI Chatbot</h3>
+<p>Conversational assistant built using modern AI models.</p>
+</div>
+
+<div class="card">
+<h3>Computer Vision</h3>
+<p>Image recognition and object detection projects.</p>
+</div>
+
+<div class="card">
+<h3>Automation Tools</h3>
+<p>Practical software solutions that improve efficiency.</p>
+</div>
+
+</div>
+
+</section>
+
+<footer id="contact">
+© 2026 New Albany AI Club
+</footer>
+
+<script>
+
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+function resize(){
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+
+resize();
+
+window.addEventListener("resize",resize);
+
+const particles=[];
+
+for(let i=0;i<1800;i++){
+
+    particles.push({
+        x:Math.random()*canvas.width,
+        y:Math.random()*canvas.height,
+        r:Math.random()*1.5+0.2,
+        speed:Math.random()*0.2,
+        color:Math.random()>0.5 ? "#7A0019" : "#D4AF37"
+    });
+
+}
+
+function animate(){
+
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    particles.forEach(p=>{
+
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fillStyle=p.color;
+        ctx.fill();
+
+        p.y-=p.speed;
+
+        if(p.y<0){
+            p.y=canvas.height;
+            p.x=Math.random()*canvas.width;
+        }
+
+    });
+
+    requestAnimationFrame(animate);
+}
+
+animate();
+
+</script>
+
+</body>
+</html>
