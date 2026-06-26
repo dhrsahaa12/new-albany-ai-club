@@ -16,8 +16,8 @@
 :root{
     --maroon:#7A0019;
     --gold:#D4AF37;
-    --white:#ffffff;
-    --black:#000000;
+    --black:#000;
+    --white:#fff;
 }
 
 *{
@@ -31,13 +31,13 @@ html{
 }
 
 body{
-    background:black;
+    background:#000;
     color:white;
     font-family:'Inter',sans-serif;
     overflow-x:hidden;
 }
 
-/* PARTICLE CANVAS */
+/* PARTICLES */
 
 #particles{
     position:fixed;
@@ -49,11 +49,11 @@ body{
 
 nav{
     position:fixed;
-    width:100%;
     top:0;
+    width:100%;
     z-index:100;
-    backdrop-filter:blur(10px);
     background:rgba(0,0,0,.4);
+    backdrop-filter:blur(12px);
     border-bottom:1px solid rgba(255,255,255,.05);
 }
 
@@ -63,12 +63,12 @@ nav{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:25px 40px;
+    padding:24px 40px;
 }
 
 .logo{
     font-family:'Michroma',sans-serif;
-    font-size:1.2rem;
+    font-size:1rem;
     letter-spacing:2px;
 }
 
@@ -77,14 +77,14 @@ nav{
 }
 
 nav ul{
-    display:flex;
     list-style:none;
+    display:flex;
     gap:40px;
 }
 
 nav a{
-    color:white;
     text-decoration:none;
+    color:white;
     transition:.3s;
 }
 
@@ -92,69 +92,50 @@ nav a:hover{
     color:var(--gold);
 }
 
-.join-btn{
-    border:1px solid var(--gold);
-    padding:12px 28px;
-    transition:.3s;
-}
-
-.join-btn:hover{
-    background:var(--gold);
-    color:black;
-}
-
 /* HERO */
 
 .hero{
     min-height:100vh;
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
     text-align:center;
+    padding:120px 20px;
     position:relative;
     z-index:1;
-    padding:120px 20px;
 }
 
 .hero-content{
-    max-width:1200px;
+    max-width:1100px;
 }
 
-.small-text{
+.tag{
     color:var(--gold);
-    letter-spacing:8px;
+    letter-spacing:6px;
     margin-bottom:25px;
 }
 
 .hero h1{
     font-family:'Michroma',sans-serif;
-    text-transform:uppercase;
-    font-size:clamp(4rem,8vw,8rem);
+    font-size:clamp(4rem,9vw,8rem);
     line-height:.95;
-}
-
-.maroon{
-    color:var(--maroon);
-}
-
-.gold{
-    color:var(--gold);
+    text-transform:uppercase;
 }
 
 .hero p{
-    max-width:800px;
-    margin:40px auto;
-    color:#cfcfcf;
+    max-width:850px;
+    margin:35px auto;
+    color:#d0d0d0;
     line-height:1.8;
-    font-size:1.15rem;
+    font-size:1.1rem;
 }
 
 .cta{
     display:inline-block;
-    margin-top:15px;
+    margin-top:10px;
+    padding:18px 40px;
     border:2px solid var(--gold);
     color:var(--gold);
-    padding:18px 40px;
     text-decoration:none;
     transition:.3s;
 }
@@ -167,64 +148,59 @@ nav a:hover{
 /* STATS */
 
 .stats{
-    margin-top:90px;
+    margin-top:80px;
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap:30px;
+    gap:25px;
 }
 
 .stat{
-    padding:20px;
+    background:rgba(255,255,255,.03);
+    border:1px solid rgba(255,255,255,.08);
+    padding:25px;
 }
 
 .stat h2{
-    font-size:4rem;
-    font-weight:800;
+    font-size:3rem;
+    color:var(--gold);
 }
 
 .stat p{
+    margin-top:8px;
     color:#ccc;
-    letter-spacing:3px;
+    letter-spacing:2px;
 }
 
-/* ABOUT */
+/* SECTIONS */
 
-.about{
+section{
     position:relative;
     z-index:1;
-    padding:120px 10%;
 }
 
-.about h2{
+.content-section{
+    max-width:1200px;
+    margin:auto;
+    padding:120px 40px;
+}
+
+.content-section h2{
     font-family:'Michroma',sans-serif;
-    font-size:3rem;
     margin-bottom:30px;
+    font-size:2.5rem;
 }
 
-.about p{
-    max-width:900px;
-    line-height:1.8;
+.content-section p{
     color:#d0d0d0;
+    line-height:1.9;
 }
 
-/* PROJECTS */
+/* CARDS */
 
-.projects{
-    position:relative;
-    z-index:1;
-    padding:120px 10%;
-}
-
-.projects h2{
-    font-family:'Michroma',sans-serif;
-    font-size:3rem;
-    margin-bottom:50px;
-}
-
-.project-grid{
+.grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:30px;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
 }
 
 .card{
@@ -235,50 +211,83 @@ nav a:hover{
 }
 
 .card:hover{
-    transform:translateY(-10px);
     border-color:var(--gold);
+    transform:translateY(-6px);
 }
 
 .card h3{
-    margin-bottom:15px;
     color:var(--gold);
+    margin-bottom:15px;
+}
+
+.card p{
+    color:#d0d0d0;
+}
+
+/* TEAM PHOTO */
+
+.team-photo{
+    margin-top:50px;
+    text-align:center;
+}
+
+.team-photo img{
+    width:100%;
+    max-width:900px;
+    border-radius:20px;
+    border:2px solid rgba(212,175,55,.25);
+    box-shadow:
+        0 0 40px rgba(212,175,55,.15),
+        0 0 80px rgba(122,0,25,.15);
+    transition:.3s;
+}
+
+.team-photo img:hover{
+    transform:scale(1.01);
+}
+
+.photo-caption{
+    margin-top:15px;
+    color:#aaa;
+    font-size:.95rem;
 }
 
 /* FOOTER */
 
 footer{
-    position:relative;
-    z-index:1;
     text-align:center;
-    padding:50px;
+    padding:60px 20px;
     border-top:1px solid rgba(255,255,255,.08);
     color:#888;
+    position:relative;
+    z-index:1;
 }
 
 @media(max-width:900px){
 
-nav ul{
-    display:none;
-}
+    nav ul{
+        display:none;
+    }
 
-.hero h1{
-    font-size:3rem;
-}
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
 
-.stats{
-    grid-template-columns:repeat(2,1fr);
-}
+    .hero h1{
+        font-size:3.2rem;
+    }
 
 }
 
 </style>
+
 </head>
+
 <body>
 
 <canvas id="particles"></canvas>
 
 <nav>
-
 <div class="nav-container">
 
 <div class="logo">
@@ -286,63 +295,57 @@ nav ul{
 </div>
 
 <ul>
-<li><a href="#home">Home</a></li>
 <li><a href="#about">About</a></li>
+<li><a href="#achievements">Achievements</a></li>
 <li><a href="#projects">Projects</a></li>
-<li><a href="#contact">Contact</a></li>
+<li><a href="#team">Team</a></li>
+<li><a href="#join">Contact</a></li>
 </ul>
 
-<a href="#" class="join-btn">JOIN US</a>
-
 </div>
-
 </nav>
 
-<section class="hero" id="home">
+<section class="hero">
 
 <div class="hero-content">
 
-<div class="small-text">
-INNOVATE • LEARN • TRANSFORM
+<div class="tag">
+ARTIFICIAL INTELLIGENCE • ROBOTICS • INNOVATION
 </div>
 
 <h1>
-BUILT BY<br>
-<span class="maroon">CURIOSITY</span><br>
-DRIVEN BY<br>
-<span class="gold">IMPACT</span>
+BUILDING THE<br>
+FUTURE OF AI
 </h1>
 
 <p>
-The New Albany AI Club empowers students to explore artificial intelligence,
-build real-world projects, collaborate with industry professionals,
-and shape the future through technology.
+The New Albany AI Club is a student-led organization focused on artificial intelligence,
+robotics, machine learning, and emerging technologies. Members collaborate on projects,
+compete internationally, and develop real-world technical skills through hands-on learning.
 </p>
 
-<a href="#projects" class="cta">
-EXPLORE OUR WORK →
-</a>
+<a href="#about" class="cta">LEARN MORE</a>
 
 <div class="stats">
 
 <div class="stat">
-<h2 style="color:#7A0019;">100+</h2>
+<h2>5+</h2>
 <p>ACTIVE MEMBERS</p>
 </div>
 
 <div class="stat">
-<h2 style="color:#D4AF37;">25+</h2>
-<p>AI PROJECTS</p>
+<h2>INTL</h2>
+<p>ZERO ROBOTICS RUNNER-UP</p>
 </div>
 
 <div class="stat">
-<h2 style="color:#7A0019;">40+</h2>
-<p>EVENTS HOSTED</p>
+<h2>1+</h2>
+<p>YEARS ACTIVE</p>
 </div>
 
 <div class="stat">
-<h2 style="color:#D4AF37;">10+</h2>
-<p>COMPETITIONS WON</p>
+<h2>TUE</h2>
+<p>AFTER SCHOOL</p>
 </div>
 
 </div>
@@ -351,51 +354,113 @@ EXPLORE OUR WORK →
 
 </section>
 
-<section class="about" id="about">
+<section id="about" class="content-section">
 
 <h2>ABOUT THE CLUB</h2>
 
 <p>
-New Albany AI Club is dedicated to helping students learn artificial intelligence,
-machine learning, automation, and software development through hands-on projects,
-competitions, workshops, and industry partnerships.
+Founded in 2025, the New Albany AI Club provides students with opportunities
+to explore artificial intelligence, robotics, programming, and machine learning
+through hands-on projects, competitions, and collaborative learning.
+
+In our first year, club members earned International Runner-Up honors in the
+Zero Robotics competition, demonstrating excellence in engineering,
+programming, teamwork, and problem-solving. Today, members continue to
+develop technical skills while exploring the future of AI and robotics.
+</p>
+
+<div class="team-photo" id="team">
+
+<img src="images/zero-robotics-team.jpg"
+alt="New Albany AI Club International Runner-Up Team">
+
+<p class="photo-caption">
+New Albany AI Club members and advisors after earning
+International Runner-Up honors in Zero Robotics.
+</p>
+
+</div>
+
+</section>
+
+<section id="achievements" class="content-section">
+
+<h2>ACHIEVEMENTS</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>MIT Zero Robotics — International Runner-Up</h3>
+<p>
+In its first year, the New Albany AI Club earned International Runner-Up
+honors in the MIT Zero Robotics competition, a program run in partnership
+with MIT and NASA where student teams program real satellites aboard the
+International Space Station. The achievement reflects the team's strength
+in engineering, programming, strategy, and collaboration on a global stage.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="projects" class="content-section">
+
+<h2>PROJECTS</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Artificial Intelligence</h3>
+<p>
+Developing AI-powered tools and applications that solve real-world problems.
+</p>
+</div>
+
+<div class="card">
+<h3>Machine Learning</h3>
+<p>
+Exploring predictive models, data analysis, and intelligent systems.
+</p>
+</div>
+
+<div class="card">
+<h3>Robotics</h3>
+<p>
+Combining programming, engineering, and autonomous systems design.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="join" class="content-section">
+
+<h2>JOIN US</h2>
+
+<p>
+Interested in artificial intelligence, robotics, programming, or technology?
+The New Albany AI Club meets every Tuesday after school and welcomes students
+who want to learn, build projects, compete, and innovate alongside their peers.
+</p>
+
+<p style="margin-top:25px;">
+Questions? Reach out at
+<a href="mailto:newalbanyaiclub@gmail.com" style="color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(212,175,55,.4);">newalbanyaiclub@gmail.com</a>
 </p>
 
 </section>
 
-<section class="projects" id="projects">
-
-<h2>FEATURED PROJECTS</h2>
-
-<div class="project-grid">
-
-<div class="card">
-<h3>AI Chatbot</h3>
-<p>Conversational assistant built using modern AI models.</p>
-</div>
-
-<div class="card">
-<h3>Computer Vision</h3>
-<p>Image recognition and object detection projects.</p>
-</div>
-
-<div class="card">
-<h3>Automation Tools</h3>
-<p>Practical software solutions that improve efficiency.</p>
-</div>
-
-</div>
-
-</section>
-
-<footer id="contact">
-© 2026 New Albany AI Club
+<footer>
+© 2026 New Albany AI Club &nbsp;•&nbsp;
+<a href="mailto:newalbanyaiclub@gmail.com" style="color:#888;text-decoration:none;">newalbanyaiclub@gmail.com</a>
 </footer>
 
 <script>
 
-const canvas = document.getElementById("particles");
-const ctx = canvas.getContext("2d");
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
 
 function resize(){
     canvas.width = window.innerWidth;
@@ -403,19 +468,18 @@ function resize(){
 }
 
 resize();
+window.addEventListener('resize', resize);
 
-window.addEventListener("resize",resize);
+const particles = [];
 
-const particles=[];
-
-for(let i=0;i<1800;i++){
+for(let i=0;i<2500;i++){
 
     particles.push({
         x:Math.random()*canvas.width,
         y:Math.random()*canvas.height,
-        r:Math.random()*1.5+0.2,
-        speed:Math.random()*0.2,
-        color:Math.random()>0.5 ? "#7A0019" : "#D4AF37"
+        r:Math.random()*1.2 + 0.2,
+        speed:Math.random()*0.12 + 0.02,
+        color:Math.random() > 0.5 ? '#7A0019' : '#D4AF37'
     });
 
 }
@@ -431,11 +495,11 @@ function animate(){
         ctx.fillStyle=p.color;
         ctx.fill();
 
-        p.y-=p.speed;
+        p.y -= p.speed;
 
-        if(p.y<0){
-            p.y=canvas.height;
-            p.x=Math.random()*canvas.width;
+        if(p.y < 0){
+            p.y = canvas.height;
+            p.x = Math.random()*canvas.width;
         }
 
     });
